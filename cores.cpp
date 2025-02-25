@@ -89,20 +89,25 @@ void motion(int x, int y)
         **/
         if ((pBx - pCliqueX) != 0)
         {
+            // Calcula os coeficientes da reta formada por pB e pClique
             GLfloat a1 = (pBy - pCliqueY) / (pBx - pCliqueX);
             GLfloat b1 = pCliqueY - a1 * pCliqueX;
 
+            // Calcula os coeficiente da reta formada por pR e pG
             GLfloat a2 = (pRy - pGy) / (pRx - pGx);
             GLfloat b2 = pGy - a2 * pGx;
 
+            // Calcula pProjX achando a interseção das retas igualando o valor de Y para descobrir o X
             pProjX = (b2 - b1) / (a1 - a2);
             pProjY = a1 * pProjX + b1;
 
+            // Calcula a distância do pClique para os pontos
             GLfloat dB = (pCliqueY - pBy) * (pCliqueY - pBy) + (pCliqueX - pBx) * (pCliqueX - pBx);
             GLfloat dR = (pCliqueY - pRy) * (pCliqueY - pRy) + (pCliqueX - pRx) * (pCliqueX - pRx);
             GLfloat dG = (pCliqueY - pGy) * (pCliqueY - pGy) + (pCliqueX - pGx) * (pCliqueX - pGx);
             GLfloat dBProj = (pCliqueY - pProjY) * (pCliqueY - pProjY) + (pCliqueX - pProjX) * (pCliqueX - pProjX);
 
+            // Calcula a contribuição
             gB = (1.0 - dB / (dB + dBProj));
             gR = (1.0 - dR / (dR + dG)) * dB / (dB + dBProj);
             gG = (1.0 - dG / (dR + dG)) * dB / (dB + dBProj);
