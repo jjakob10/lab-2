@@ -19,8 +19,8 @@ Este programa desenha um triângulo com um gradiente de vermelho, verde e azul. 
 1. Clone o repositório:
 
    ```bash
-   git clone <URL_do_repositório>
-   cd <nome_do_repositório>
+   git clone https://github.com/jjakob10/lab-2.git
+   cd lab-2
    ```
 
 2. Compile e execute o programa com o comando:
